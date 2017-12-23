@@ -281,6 +281,18 @@ class OMXPlayer(object):
 
     """ ROOT INTERFACE METHODS """
 
+    @_check_player_is_active
+    @_from_dbus_type
+    def display_text(self, text, time):
+        """
+        Displays a `text` message for `time` seconds.
+
+        Args:
+            text (string): The message to display
+            time (float): How many seconds to display it
+        """
+        self._root_interface.DisplayText(text, Int64(1000.0 * time))
+
     """ PLAYER INTERFACE PROPERTIES """
 
     @_check_player_is_active
